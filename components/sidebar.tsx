@@ -54,7 +54,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
               `flex flex-row ml-2 h-auto w-fit items-center gap-x-2 cursor-pointer text-md font-medium hover:text-white transition text-neutral-400 py-1 overflow-y-hidden`
             )}
           >
-            <FaHeart size={24} className="mx-2 my-2" />
+            <FaHeart size={20} className="mx-3 my-2" />
             <p className="truncate w-fit">Favourite</p>
           </Link>
         </Box>
