@@ -48,7 +48,7 @@ const AuthModal = () => {
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="block m-auto">
-            <button className=" py-2 rounded-2xl shadow-lg text-xl  w-[200px] font-medium hover:bg-neutral-600 text-white bg-green-700"onClick={handleLogin} >{data?.success == true ? "Login" : "Logout" }</button>
+            <button className=" py-2 rounded-2xl shadow-lg text-xl  w-[200px] font-medium hover:bg-neutral-600 text-white bg-green-700"onClick={handleLogin} >Login</button>
           </div>
         </div>
       </DialogContent>
