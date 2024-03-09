@@ -13,31 +13,46 @@ import { BiMoviePlay, } from "react-icons/bi";
 import { RiMovieLine } from "react-icons/ri";
 
 interface SidebarProps {
-  children: React.ReactNode;
-  displayType: DisplayType; // Add displayType as a prop
-  setDisplayType: React.Dispatch<React.SetStateAction<DisplayType>>; // Add setDisplayType as a prop
+  children: React.ReactNode; // Add setDisplayType as a prop
 }
 
 
 
-enum DisplayType {
-  Movies = "movies",
-  Tvshows = "tvshows"
-}
+
 
 
 const Sidebar: React.FC<SidebarProps> = ({ children, }) => {
 
-  const[displayType, setDisplayType] = useState<DisplayType>(DisplayType.Movies);
+  const pathname = usePathname();
+
+  const routes = useMemo(
+    () => [
+      {
+        icon: BiMoviePlay,
+        label: "Movie",
+        active: pathname !== "/shows",
+        href: "/",
+      },
+      {
+        icon: RiMovieLine,
+        label: "TV-shows",
+        active: pathname === "/shows",
+        href: "/shows",
+      },
+    ],
+    [pathname]
+  );
+ 
 
 
   return (
     <div className="flex h-full">
       <div className="hidden md:flex flex-col gap-y-2 bg-black w-[300px] p-2">
         <Box>
-          <div className="px-5 py-5 flex flex-col float-start gap-y-2">
-            <button  onClick={() => setDisplayType(DisplayType.Movies)}>Movie</button>
-            <button  onClick={() => setDisplayType(DisplayType.Tvshows)}>Tvshows</button>
+          <div className="px-5 py-5 flex flex-col gap-y-2">
+            {routes.map((item) => (
+              <SidebarItem  key={item.label} {...item}/>
+            ))}
           </div>
         </Box>
         <Box className="overflow-y-auto h-full">

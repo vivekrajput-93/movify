@@ -7,20 +7,20 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 
-interface MovieProps {
+interface ShowsProps {
   id:string,
-  title : string,
+  name : string,
   poster_path : string,
-  release_date : number
+  first_air_date : number
 }
 
-export default function Home() {
-  const [movie, setMovie] = useState<MovieProps[]>([]);
+export default function Shows() {
+  const [shows, setShows] = useState<ShowsProps[]>([]);
 
-  const fetchMovie = async () => {
+  const fetchShows = async () => {
     try {
       const res = await fetch(
-        "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+        "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1",
         {
           headers: {
             Authorization:
@@ -31,7 +31,8 @@ export default function Home() {
 
       const data = await res.json();
       if (data && data.results && data.results.length) {
-        setMovie(data.results);
+        setShows(data.results);
+        console.log(data.results);
       }
     } catch (error) {
       console.log(error);
@@ -39,24 +40,24 @@ export default function Home() {
   };
 
   useEffect(() => {
-    fetchMovie();
+    fetchShows();
   }, []);
 
   return (
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
         <Header>
-          <h1 className="text-white text-3xl font-bold">Explore your Favourite Movie !</h1>
+          <h1 className="text-white text-3xl font-bold">Explore your Favourite Shows !</h1>
         </Header>
         <div className="mt-7 mb-7 h-full gap-10 grid grid-cols-4 place-items-center   px-6">
          {
-          movie.map((item) => (
+          shows.map((item) => (
             <Card className="w-[250px] h-fit border-none shadow-2xl bg-neutral-800">
               <CardHeader>
-                <Image  src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.title} width={80} height={80} className="w-full h-[160px]  rounded-xl" />
+                <Image  src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.name} width={80} height={80} className="w-full h-[160px]  rounded-xl" />
               </CardHeader>
               <CardFooter className="flex flex-col gap-y-2">
-                <h1 className="text-white font-semibold text-lg">{item.title}</h1>
-                <h3 className="text-neutral-400 text-base">{item.release_date}</h3>
+                <h1 className="text-white font-semibold text-lg">{item.name}</h1>
+                <h3 className="text-neutral-400 text-base">{item.first_air_date}</h3>
               </CardFooter>
             </Card>
           ))
