@@ -4,8 +4,6 @@ import { usePathname } from "next/navigation";
 import { useMemo, useState } from "react";
 import Box from "./Box";
 import SidebarItem from "./SidebarItem";
-import { HiHome } from "react-icons/hi";
-import { BiSearch } from "react-icons/bi";
 import { twMerge } from "tailwind-merge";
 import Link from "next/link";
 import { FaHeart } from "react-icons/fa";

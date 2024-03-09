@@ -7,6 +7,9 @@ import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
 import { twMerge } from "tailwind-merge";
 import Button from "./Button";
 import AuthModal from "./AuthModal";
+import { BiMoviePlay, } from "react-icons/bi";
+import { RiMovieLine } from "react-icons/ri";
+import Link from "next/link";
 
 
 interface HeaderProps {
@@ -35,13 +38,17 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  gap-3 my-4"></div>
           </div>
         </div>
-        <div className="flex md:hidden gap-x-2 items-center">
-          <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
-            <HiHome size={20} className="text-black" />
+        <div className="flex md:hidden max-[768px]:mb-10  gap-x-2 items-center">
+        <Link href="/" >
+        <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
+            <BiMoviePlay size={20} className="text-black" />
           </button>
-          <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
-            <BiSearch size={20} className="text-black" />
+        </Link>
+            <Link href="/shows" >
+            <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
+            <RiMovieLine size={20} className="text-black" />
           </button>
+            </Link>
         </div>
         <div className="flex justify-between items-center gap-x-4 mb-12">
           <>
