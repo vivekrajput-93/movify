@@ -58,14 +58,14 @@ export default function Shows() {
           </Header>
           <div className="mt-7  h-full gap-10 2xl:grid 2xl:grid-cols-4 xl:grid xl:grid-cols-3  lg:grid lg:grid-cols-2 lg:gap-x-12 md:grid md:grid-cols-2  sm:grid sm:grid-cols-2  place-items-center px-6 min-[330px]:grid min-[330px]:grid-cols-1 ">
             {shows.map((item) => (
-              <Card className="w-[250px] h-fit border-none shadow-2xl bg-neutral-800">
+             <Card className="w-[290px]  h-[310px] border border-neutral-600 shadow-2xl bg-neutral-800 ">
                 <CardHeader>
                   <Image
                     src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                     alt={item.name}
                     width={80}
                     height={80}
-                    className="w-full h-[160px]  rounded-xl"
+                    className="w-full h-[160px] object-contain  rounded-xl"
                   />
                 </CardHeader>
                 <CardFooter className="flex flex-col gap-y-2">
