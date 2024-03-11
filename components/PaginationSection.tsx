@@ -90,7 +90,7 @@ const PaginationSection: React.FC<PaginationProps> = ({
   };
 
   return (
-    <Pagination>
+    <Pagination className="overflow-y-hidden">
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious

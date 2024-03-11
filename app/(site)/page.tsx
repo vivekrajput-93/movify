@@ -64,7 +64,7 @@ export default function Home() {
       {loading ? (
         <Loading />
       ) : (
-        <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
+        <div className="bg-neutral-900 flex flex-col rounded-lg h-full w-full overflow-hidden overflow-y-auto">
           <Header className="rounded-lg">
             <h1 className="text-white text-3xl font-bold">
               Explore your Favourite Movie !
@@ -96,16 +96,18 @@ export default function Home() {
               </Card>
             ))}
           </div>
-          <div className="py-4">
-            <PaginationSection
-              totalItem={movie.length}
-              itemsPerPage={itemsPerPage}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-            />
-          </div>
+            <div className="my-8">
+            <PaginationSection 
+            totalItem={movie.length}
+            itemsPerPage={itemsPerPage}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+            </div>
         </div>
       )}
+
+
     </>
   );
 }

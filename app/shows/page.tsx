@@ -64,7 +64,7 @@ export default function Shows() {
       {loading ? (
         <Loading />
       ) : (
-        <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
+        <div className="bg-neutral-900 rounded-lg flex flex-col h-full w-full overflow-hidden overflow-y-auto">
           <Header>
             <h1 className="text-white text-3xl font-bold">
               Explore your Favourite Shows !
@@ -93,7 +93,7 @@ export default function Shows() {
               </Card>
             ))}
           </div>
-          <div className="py-4">
+          <div className="my-8">
             <PaginationSection
               totalItem={shows.length}
               itemsPerPage={itemsPerPage}
