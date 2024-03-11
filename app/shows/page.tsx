@@ -6,6 +6,7 @@ import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Loading from "../Loading";
+import PaginationSection from "@/components/PaginationSection";
 
 interface ShowsProps {
   id: string;
@@ -17,6 +18,8 @@ interface ShowsProps {
 export default function Shows() {
   const [shows, setShows] = useState<ShowsProps[]>([]);
   const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(8);
 
   const fetchShows = async () => {
     try {
@@ -45,6 +48,17 @@ export default function Shows() {
     fetchShows();
   }, []);
 
+
+  const lastItemIndex = currentPage * itemsPerPage;
+  const firstItemIndex = lastItemIndex - itemsPerPage;
+  const currentItems = shows.slice(firstItemIndex, lastItemIndex);
+
+  let pages = [];
+  const totalItem = shows.length;
+  for (let i = 0; i <= Math.ceil(totalItem / itemsPerPage); i++) {
+    pages.push(i);
+  }
+
   return (
     <>
       {loading ? (
@@ -57,7 +71,7 @@ export default function Shows() {
             </h1>
           </Header>
           <div className="mt-7  h-full gap-10 2xl:grid 2xl:grid-cols-4 xl:grid xl:grid-cols-3  lg:grid lg:grid-cols-2 lg:gap-x-12 md:grid md:grid-cols-2  sm:grid sm:grid-cols-2  place-items-center px-6 min-[330px]:grid min-[330px]:grid-cols-1 ">
-            {shows.map((item) => (
+            {currentItems.map((item) => (
              <Card key={item.id} className="w-[290px]  h-[310px] border border-neutral-600 shadow-2xl bg-neutral-800 ">
                 <CardHeader>
                   <Image
@@ -78,6 +92,14 @@ export default function Shows() {
                 </CardFooter>
               </Card>
             ))}
+          </div>
+          <div className="py-4">
+            <PaginationSection
+              totalItem={shows.length}
+              itemsPerPage={itemsPerPage}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
           </div>
         </div>
       )}
