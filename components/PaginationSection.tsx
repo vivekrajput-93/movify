@@ -78,8 +78,10 @@ const PaginationSection: React.FC<PaginationProps> = ({
     // if (activePages[activePages.length - 1] < pages.length) {
     //   renderedPages.push(
     //     <PaginationEllipsis
+        
     //       key="ellipsis-end"
     //       onClick={() =>
+
     //         setCurrentPage(activePages[activePages.length - 1] + 1)
     //       }
     //     />

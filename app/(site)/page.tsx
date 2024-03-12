@@ -7,6 +7,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Loading from "../Loading";
 import PaginationSection from "@/components/PaginationSection";
+import Search from "@/components/Search";
 
 interface MovieProps {
   id: string;
@@ -64,11 +65,10 @@ export default function Home() {
       {loading ? (
         <Loading />
       ) : (
-        <div className="bg-neutral-900 flex flex-col rounded-lg h-full w-full overflow-hidden overflow-y-auto">
+        <div className="bg-neutral-900 flex flex-col rounded-lg h-fit w-full overflow-hidden overflow-y-auto">
           <Header className="rounded-lg">
-            <h1 className="text-white text-3xl font-bold">
-              Explore your Favourite Movie !
-            </h1>
+            <Search />
+           
           </Header>
           <div className="mt-7 pb-3  h-full gap-10 2xl:grid 2xl:grid-cols-4 xl:grid xl:grid-cols-3  lg:grid lg:grid-cols-2 lg:gap-x-12 md:grid md:grid-cols-2  sm:grid sm:grid-cols-2  place-items-center px-6 min-[330px]:grid min-[330px]:grid-cols-1 ">
             {currentItems.map((item) => (
@@ -96,7 +96,7 @@ export default function Home() {
               </Card>
             ))}
           </div>
-            <div className="my-8">
+            <div className="my-12 overflow-y-hidden">
             <PaginationSection 
             totalItem={movie.length}
             itemsPerPage={itemsPerPage}

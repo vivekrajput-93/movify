@@ -10,6 +10,7 @@ import AuthModal from "./AuthModal";
 import { BiMoviePlay, } from "react-icons/bi";
 import { RiMovieLine } from "react-icons/ri";
 import Link from "next/link";
+import Search from "./Search";
 
 
 interface HeaderProps {
@@ -20,9 +21,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ children, className }) => {
   const router = useRouter();
 
-  const handleLogout = () => {
-    // handle Logout to next time
-  };
+
 
   return (
     <div
@@ -38,6 +37,9 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  gap-3 my-4"></div>
           </div>
         </div>
+        {/* <div>
+          <Search />
+        </div> */}
         <div className="flex md:hidden max-[768px]:mb-10  gap-x-2 items-center">
         <Link href="/" >
         <button className="rounded-full p-2 bg-white flex items-center justify-center hover:opacity-75 transition">
