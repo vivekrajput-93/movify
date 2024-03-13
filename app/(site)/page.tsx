@@ -1,5 +1,6 @@
 "use client";
 
+
 import Header from "@/components/Header";
 import ListItem from "@/components/ListItem";
 import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,19 +23,23 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [searchInput, setSearchInput] = useState("");
 
   const fetchMovie = async () => {
     try {
       setLoading(true);
-      const res = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${currentPage}`,
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ODcxMzYzODkzZjZkOWVmNWM2YzA1NDFkNmQ4M2IzYiIsInN1YiI6IjY1NjU5YmM4MTU2Y2M3MDBlYmMwZDEwMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ujJbbgrjNjTiP4cM_ITOPJe0o3unx3aV6UaG00NBzb4",
-          },
-        }
-      );
+      let apiUrl = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${currentPage}`;
+
+      if (searchInput) {
+        apiUrl = `https://api.themoviedb.org/3/search/movie?language=en-US&query=${searchInput}&page=${currentPage}`;
+      }
+
+      const res = await fetch(apiUrl, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ODcxMzYzODkzZjZkOWVmNWM2YzA1NDFkNmQ4M2IzYiIsInN1YiI6IjY1NjU5YmM4MTU2Y2M3MDBlYmMwZDEwMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ujJbbgrjNjTiP4cM_ITOPJe0o3unx3aV6UaG00NBzb4",
+        },
+      });
 
       const data = await res.json();
       if (data && data.results && data.results.length) {
@@ -48,7 +53,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchMovie();
-  }, []);
+  }, [currentPage, searchInput]);
 
   const lastItemIndex = currentPage * itemsPerPage;
   const firstItemIndex = lastItemIndex - itemsPerPage;
@@ -67,8 +72,7 @@ export default function Home() {
       ) : (
         <div className="bg-neutral-900 flex flex-col rounded-lg h-fit w-full overflow-hidden overflow-y-auto">
           <Header className="rounded-lg">
-            <Search />
-           
+            <Search setSearchInput={setSearchInput} />
           </Header>
           <div className="mt-7 pb-3  h-full gap-10 2xl:grid 2xl:grid-cols-4 xl:grid xl:grid-cols-3  lg:grid lg:grid-cols-2 lg:gap-x-12 md:grid md:grid-cols-2  sm:grid sm:grid-cols-2  place-items-center px-6 min-[330px]:grid min-[330px]:grid-cols-1 ">
             {currentItems.map((item) => (
@@ -96,18 +100,16 @@ export default function Home() {
               </Card>
             ))}
           </div>
-            <div className="my-12 overflow-y-hidden">
-            <PaginationSection 
-            totalItem={movie.length}
-            itemsPerPage={itemsPerPage}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
-            </div>
+          <div className="my-12 overflow-y-hidden">
+            <PaginationSection
+              totalItem={movie.length}
+              itemsPerPage={itemsPerPage}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          </div>
         </div>
       )}
-
-
     </>
   );
 }
