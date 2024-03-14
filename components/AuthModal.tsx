@@ -18,16 +18,16 @@ import { usePathname } from "next/navigation"
 
 const AuthModal = () => {
 
-  const {data, mutate} = useMutation({ mutationKey : ["login"], mutationFn : Mutation,});
+  // const {data, mutate} = useMutation({ mutationKey : ["login"], mutationFn : Mutation,});
 
 
  
 
-  const handleLogin = async() => {
-    mutate();
-   localStorage.setItem("guest_session_id", data.guest_session_id);
+  // const handleLogin = async() => {
+  //   mutate();
+  //  localStorage.setItem("guest_session_id", data.guest_session_id);
     
-  }
+  // }
 
 
   const handleLogout = async() => {
@@ -48,7 +48,7 @@ const AuthModal = () => {
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="block m-auto">
-            <button className=" py-2 rounded-2xl shadow-lg text-xl  w-[200px] font-medium hover:bg-neutral-600 text-white bg-green-700"onClick={handleLogin} >Login</button>
+            <button className=" py-2 rounded-2xl shadow-lg text-xl  w-[200px] font-medium hover:bg-neutral-600 text-white bg-green-700" >Login</button>
           </div>
         </div>
       </DialogContent>

@@ -29,3 +29,8 @@ html,body,
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(62, 200, 62); 
 }
+
+
+.movie-info {
+  background-color: blue !important ;
+}

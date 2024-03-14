@@ -19,7 +19,7 @@ const Search: React.FC<SearchProps> = ({ setSearchInput }) => {
 
   return (
     <div className="flex  gap-x-2">
-      <div className="flex shadow-lg py-2 px-4 w-[350px] mb-5 gap-x-3 bg-neutral-700 rounded-3xl">
+      <div className="flex shadow-lg py-2 px-4 w-[350px] mb-5 gap-x-3 bg-neutral-700 rounded-3xl ">
         <FaSearch size={20} />
         <input
           type="text"
