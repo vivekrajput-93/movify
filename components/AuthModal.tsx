@@ -37,7 +37,7 @@ const AuthModal = () => {
   return (
     <Dialog >
       <DialogTrigger  asChild>
-        <Button variant="default" className="text-white bg-green-700 rounded-2xl">Login</Button>
+        <Button variant="default" className="text-white bg-green-500 rounded-2xl">Login</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-neutral-900 border-none">
         <DialogHeader>
