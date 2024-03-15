@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export default function loading() {
   return (
-    <main className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto sm:grid min-[330px]:grid min-[330px]:grid-cols-1">
+    <main className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto ">
       <Header>
         <Skeleton className="h-8 mt-2 w-fit bg-neutral-900" />
       </Header>
