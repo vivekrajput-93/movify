@@ -43,7 +43,7 @@
 
 .button-container {
 
-    background-color: #2F855A;
+    background-color: #1be982;
     margin-top: 1rem;
     padding: 10px 70px;
     font-size: 1.2rem;
@@ -65,7 +65,7 @@
 
 
 .info-head span {
-    color: #2F855A;
+    color: #0dfa83;
     flex-direction: row !important;
     width: fit-content;
     

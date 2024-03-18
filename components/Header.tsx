@@ -52,9 +52,7 @@ const Header: React.FC<HeaderProps> = ({ children, className }) => {
         </div>
         <div className="flex justify-between items-center gap-x-4 mb-12">
           <>
-            <div className="flex items-center space-x-2">
-              <Switch />
-            </div>
+
             <div>
               <AuthModal />
             </div>
