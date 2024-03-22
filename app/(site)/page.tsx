@@ -10,6 +10,7 @@ import Loading from "../Loading";
 import PaginationSection from "@/components/PaginationSection";
 import Search from "@/components/Search";
 import Link from "next/link";
+import { useMutation } from "@tanstack/react-query";
 
 interface MovieProps {
   id: string;
@@ -26,6 +27,9 @@ export default function Home() {
   const [itemsPerPage, setItemsPerPage] = useState(8);
   const [searchInput, setSearchInput] = useState("");
   const [rating, setRating] = useState(0);
+
+
+
 
   const fetchMovie = async () => {
     try {
@@ -74,6 +78,8 @@ export default function Home() {
   }
 
 
+
+
   return (
     <>
       {loading ? (
@@ -85,11 +91,11 @@ export default function Home() {
           </Header>
           <div className="mt-7 pb-3  h-full gap-10 2xl:grid 2xl:grid-cols-4 xl:grid xl:grid-cols-3  lg:grid lg:grid-cols-2 lg:gap-x-12 md:grid md:grid-cols-2  sm:grid sm:grid-cols-2  place-items-center px-6 min-[330px]:grid min-[330px]:grid-cols-1 ">
             {currentItems.map((item) => (
+              <Link href={`/movie/${item.id}`}  key={item.id} {...item} >
               <Card
                
                 className="w-[290px]  h-[310px] border border-neutral-600 shadow-2xl bg-neutral-800 "
               >
-                  <Link href={`/movie/${item.id}`}  key={item.id} {...item} >
                 <CardHeader>
                   <Image
                     src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
@@ -107,14 +113,8 @@ export default function Home() {
                     {item.release_date}
                   </h3>
                 </CardFooter>
-              </Link>
-                <div>
-                  <form onSubmit={handleRating}>
-                    <input type="number" min="0" max="10" step="0.5" onChange={(e) => setRating(Number(e.target.value))}  />
-                    <button>Rate</button>
-                  </form>
-                </div>
               </Card>
+              </Link>
             ))}
           </div>
           <div className="my-12 overflow-y-hidden">

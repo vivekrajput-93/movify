@@ -55,13 +55,13 @@ const Sidebar: React.FC<SidebarProps> = ({ children, }) => {
         </Box>
         <Box className="overflow-y-auto h-full">
           <Link
-            href="/favourite"
+            href="/"
             className={twMerge(
               `flex flex-row ml-2 h-auto w-fit items-center gap-x-2 cursor-pointer text-md font-medium hover:text-white transition text-neutral-400 py-1 overflow-y-hidden`
             )}
           >
             <FaHeart size={20} className="mx-3 my-2" />
-            <p className="truncate w-fit">Favourite</p>
+            <p className="truncate w-fit">Movify</p>
           </Link>
         </Box>
       </div>
